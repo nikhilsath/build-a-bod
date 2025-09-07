@@ -4,12 +4,13 @@
 //
 //  Created by Nikhil Sathyanarayana on 07/09/2025.
 //
-
 import SwiftUI
 import SwiftData
+import FirebaseCore
 
 @main
 struct build_a_botApp: App {
+    // SwiftData container
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -22,6 +23,11 @@ struct build_a_botApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+
+    init() {
+        // Firebase init
+        FirebaseApp.configure()
+    }
 
     var body: some Scene {
         WindowGroup {
