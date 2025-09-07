@@ -14,9 +14,11 @@ jobs:
         with:
           # Use available Xcode 16 release
           xcode-version: '16.2.0'
+      - name: List available simulators
+        run: xcrun simctl list
       - name: Build and run tests
         run: |
           xcodebuild test \
             -project build-a-bot/build-a-bot.xcodeproj \
             -scheme build-a-bot \
-            -destination 'platform=iOS Simulator,name=iPhone 14'
+            -destination 'platform=iOS Simulator,OS=latest,name=iPhone 14'
