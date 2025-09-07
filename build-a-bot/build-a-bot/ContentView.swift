@@ -24,6 +24,7 @@ struct ContentView: View {
             }
             #endif
         }
+        .buttonStyle(.bordered)
         .padding()
         .onAppear { print("ContentView appeared") }
     }
