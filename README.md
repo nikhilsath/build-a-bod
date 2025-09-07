@@ -159,7 +159,7 @@ Add usage strings to `Info.plist`:
 - **Unit:** XCTest (services, models).
 - **UI:** XCUITest for start/stop, permission flows.
 - **Health/Location fakes:** inject mock services for simulator.
-- **CI:** GitHub Actions uses Xcode 15.4 to build the project and run all unit and UI tests on every PR using an iPhone 14 simulator.
+- **CI:** GitHub Actions uses Xcode 16.2.0 to build the project and run all unit and UI tests on every PR using an iPhone 14 simulator.
 
 ### Adding UI tests to CI
 1. Add tests to the `build-a-botUITests` target.
