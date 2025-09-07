@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9E1CB1FA2E6E0A3E00151188 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E1CB1F92E6E0A3E00151188 /* FirebaseCore */; };
+		9E1CB1FC2E6E0A3E00151188 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E1CB1FB2E6E0A3E00151188 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9E302B082E6DF59F005BC7F2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E1CB1E72E6E09CD00151188 /* build-a-bot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "build-a-bot.xcodeproj"; sourceTree = "<group>"; };
 		9E302AF72E6DF59D005BC7F2 /* build-a-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "build-a-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E302B072E6DF59F005BC7F2 /* build-a-botTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "build-a-botTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E302B112E6DF59F005BC7F2 /* build-a-botUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "build-a-botUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E1CB1FA2E6E0A3E00151188 /* FirebaseCore in Frameworks */,
+				9E1CB1FC2E6E0A3E00151188 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +81,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E1CB1EB2E6E09CD00151188 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9E302AEE2E6DF59D005BC7F2 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +135,8 @@
 			);
 			name = "build-a-bot";
 			packageProductDependencies = (
+				9E1CB1F92E6E0A3E00151188 /* FirebaseCore */,
+				9E1CB1FB2E6E0A3E00151188 /* FirebaseFirestore */,
 			);
 			productName = "build-a-bot";
 			productReference = 9E302AF72E6DF59D005BC7F2 /* build-a-bot.app */;
@@ -203,6 +220,9 @@
 			);
 			mainGroup = 9E302AEE2E6DF59D005BC7F2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9E1CB1F82E6E0A3E00151188 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9E302AF82E6DF59D005BC7F2 /* Products */;
 			projectDirPath = "";
@@ -210,6 +230,10 @@
 				{
 					ProductGroup = 9E302B272E6DFD27005BC7F2 /* Products */;
 					ProjectRef = 9E302B262E6DFD27005BC7F2 /* build-a-bot.xcodeproj */;
+				},
+				{
+					ProductGroup = 9E1CB1EB2E6E09CD00151188 /* Products */;
+					ProjectRef = 9E1CB1E72E6E09CD00151188 /* build-a-bot.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -591,6 +615,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E1CB1F82E6E0A3E00151188 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E1CB1F92E6E0A3E00151188 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E1CB1F82E6E0A3E00151188 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		9E1CB1FB2E6E0A3E00151188 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E1CB1F82E6E0A3E00151188 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9E302AEF2E6DF59D005BC7F2 /* Project object */;
 }
