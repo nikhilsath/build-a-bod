@@ -1,66 +1,30 @@
-//
-//  ContentView.swift
-//  build-a-bot
-//
-//  Created by Nikhil Sathyanarayana on 07/09/2025.
-//
-
 import SwiftUI
-import SwiftData
+#if canImport(FirebaseCore)
+import FirebaseCore
+#endif
+#if canImport(FirebaseFirestore)
+import FirebaseFirestore
+#endif
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        VStack(spacing: 16) {
+            Text("Build-A-Bod").font(.largeTitle).bold()
+
+            Button("Check Firebase configured") {
+                print("Firebase configured:", FirebaseApp.app() != nil)
+            }
+
+            #if canImport(FirebaseFirestore)
+            Button("Test Firestore write") {
+                Firestore.firestore().collection("debug")
+                    .addDocument(data: ["hello":"world","ts":Date()]) { err in
+                        print(err == nil ? "Firestore write OK" : "Firestore error: \(err!)")
                     }
-                }
-                .onDelete(perform: deleteItems)
             }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+            #endif
         }
+        .padding()
+        .onAppear { print("ContentView appeared") }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
