@@ -66,7 +66,7 @@ BuildABod/
 ## Setup
 
 ### Prereqs
-- Xcode 15+, iOS 16+ device/simulator.
+ - Xcode 16+, iOS 16+ device/simulator.
 - Apple Developer account (Health/Background modes).
 - Firebase project.
 
@@ -156,10 +156,15 @@ Add usage strings to `Info.plist`:
 ---
 
 ## Testing
-- **Unit:** XCTest (services, models).  
-- **UI:** XCUITest for start/stop, permission flows.  
-- **Health/Location fakes:** inject mock services for simulator.  
-- **CI suggestion:** GitHub Actions for PR builds & unit tests; add Xcode Cloud/TestFlight once M1 stabilizes.
+- **Unit:** XCTest (services, models).
+- **UI:** XCUITest for start/stop, permission flows.
+- **Health/Location fakes:** inject mock services for simulator.
+- **CI:** GitHub Actions uses `apple-actions/setup-xcode` to select preinstalled Xcode 16.4, displays available SDKs and simulators, then builds the app and runs unit and UI tests on the latest iPhone 14 simulator with code signing disabled.
+
+### Adding UI tests to CI
+1. Add new `XCTestCase` files to the `build-a-botUITests` target.
+2. Commit your changes and open a pull request.
+3. The workflow automatically executes the UI tests on the simulator.
 
 ---
 
