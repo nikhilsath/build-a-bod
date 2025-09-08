@@ -156,10 +156,10 @@ Add usage strings to `Info.plist`:
 ---
 
 ## Testing
-- **Unit:** XCTest (services, models).  
-- **UI:** XCUITest for start/stop, permission flows.  
-- **Health/Location fakes:** inject mock services for simulator.  
-- **CI suggestion:** GitHub Actions for PR builds & unit tests; add Xcode Cloud/TestFlight once M1 stabilizes.
+- **Unit:** XCTest (services, models).
+- **UI:** XCUITest for start/stop, permission flows.
+- **Health/Location fakes:** inject mock services for simulator.
+- **CI:** GitHub Actions builds the Xcode project on every pull request to ensure it compiles.
 
 ---
 
