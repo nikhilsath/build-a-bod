@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: xcodebuild -project build-a-bot/build-a-bot.xcodeproj -scheme build-a-bot build
