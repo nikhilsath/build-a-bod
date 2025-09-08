@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Select Xcode 15.4
+        run: sudo xcode-select -switch /Applications/Xcode_15.4.app
+      - name: List available simulators
+        run: xcrun simctl list
+      - name: Build and test
+        run: |
+          xcodebuild test \
+            -project build-a-bot/build-a-bot.xcodeproj \
+            -scheme build-a-bot \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO
