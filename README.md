@@ -156,10 +156,15 @@ Add usage strings to `Info.plist`:
 ---
 
 ## Testing
-- **Unit:** XCTest (services, models).  
-- **UI:** XCUITest for start/stop, permission flows.  
-- **Health/Location fakes:** inject mock services for simulator.  
-- **CI suggestion:** GitHub Actions for PR builds & unit tests; add Xcode Cloud/TestFlight once M1 stabilizes.
+- **Unit:** XCTest (services, models).
+- **UI:** XCUITest for start/stop, permission flows.
+- **Health/Location fakes:** inject mock services for simulator.
+- **CI:** GitHub Actions selects Xcode 15.4, lists available simulators, then builds the app and runs unit and UI tests on an iPhone 14 simulator with code signing disabled.
+
+### Adding UI tests to CI
+1. Add new `XCTestCase` files to the `build-a-botUITests` target.
+2. Commit your changes and open a pull request.
+3. The workflow automatically executes the UI tests on the simulator.
 
 ---
 
