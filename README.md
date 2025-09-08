@@ -7,6 +7,25 @@ _A simple, offline-first walking & running tracker with smart route goals and pr
 
 ---
 
+## Table of Contents
+- [Features (MVP)](#features-mvp)
+- [Tech stack](#tech-stack)
+- [Project structure (proposed)](#project-structure-proposed)
+- [Setup](#setup)
+- [Running](#running)
+- [Privacy & Security](#privacy--security)
+- [Leaderboards (privacy-preserving)](#leaderboards-privacy-preserving)
+- [Offline-first sync (how it works)](#offline-first-sync-how-it-works)
+- [Notifications (“Beat-Your-Best”)](#notifications-beat-your-best)
+- [Roadmap (high-level)](#roadmap-high-level)
+- [Testing](#testing)
+- [Dev tips](#dev-tips)
+- [Contributing](#contributing)
+- [License](#license)
+- [FAQ](#faq)
+
+---
+
 ## Features (MVP)
 - **Tracking:** time, distance, pace, calories, cadence, elevation, HR (via Apple Health/Workout).  
 - **Map Goal Planner v2:** set a distance (e.g., 5K/10K); app suggests nearby loop/point-to-point routes that fit the goal.  
