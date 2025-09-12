@@ -30,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		9E1CB1E72E6E09CD00151188 /* build-a-bot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "build-a-bot.xcodeproj"; sourceTree = "<group>"; };
+		9E1CB2072E7218FF00151188 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/HealthKitUI.framework; sourceTree = DEVELOPER_DIR; };
+		9E1CB2082E7218FF00151188 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		9E302AF72E6DF59D005BC7F2 /* build-a-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "build-a-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E302B072E6DF59F005BC7F2 /* build-a-botTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "build-a-botTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E302B112E6DF59F005BC7F2 /* build-a-botUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "build-a-botUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,12 +90,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9E1CB2062E7218FF00151188 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E1CB2082E7218FF00151188 /* HealthKit.framework */,
+				9E1CB2072E7218FF00151188 /* HealthKitUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9E302AEE2E6DF59D005BC7F2 = {
 			isa = PBXGroup;
 			children = (
 				9E302AF92E6DF59D005BC7F2 /* build-a-bot */,
 				9E302B0A2E6DF59F005BC7F2 /* build-a-botTests */,
 				9E302B142E6DF59F005BC7F2 /* build-a-botUITests */,
+				9E1CB2062E7218FF00151188 /* Frameworks */,
 				9E302AF82E6DF59D005BC7F2 /* Products */,
 			);
 			sourceTree = "<group>";
