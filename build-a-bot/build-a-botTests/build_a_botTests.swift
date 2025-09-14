@@ -34,4 +34,22 @@ struct build_a_botTests {
         #expect(updated?.steps == 200)
     }
 
+    @MainActor
+    @Test func loadsDefaultMetricsWhenStoreEmpty() throws {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HealthMetric.self, configurations: config)
+        let context = container.mainContext
+        let store = LocalHealthStore()
+
+        // Should insert bundled metrics for today and prior days
+        store.loadDefaultMetricsIfNeeded(context: context)
+
+        // Ensure StepCountView can render with the seeded data
+        _ = StepCountView().modelContainer(container)
+
+        let metric = store.fetchMetric(for: Date(), context: context)
+        #expect(metric != nil)
+        #expect((metric?.steps ?? 0) > 0)
+    }
+
 }
