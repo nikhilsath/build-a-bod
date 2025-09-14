@@ -8,24 +8,29 @@ import FirebaseFirestore
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 16) {
-            Text("Build-A-Bod").font(.largeTitle).bold()
+        NavigationStack {
+            VStack(spacing: 16) {
+                Button("Check Firebase configured") {
+                    print("Firebase configured:", FirebaseApp.app() != nil)
+                }
 
-            Button("Check Firebase configured") {
-                print("Firebase configured:", FirebaseApp.app() != nil)
-            }
+                #if canImport(FirebaseFirestore)
+                Button("Test Firestore write") {
+                    Firestore.firestore().collection("debug")
+                        .addDocument(data: ["hello":"world","ts":Date()]) { err in
+                            print(err == nil ? "Firestore write OK" : "Firestore error: \(err!)")
+                        }
+                }
+                #endif
 
-            #if canImport(FirebaseFirestore)
-            Button("Test Firestore write") {
-                Firestore.firestore().collection("debug")
-                    .addDocument(data: ["hello":"world","ts":Date()]) { err in
-                        print(err == nil ? "Firestore write OK" : "Firestore error: \(err!)")
-                    }
+                NavigationLink("Show Today's Steps") {
+                    StepCountView()
+                }
             }
-            #endif
+            .buttonStyle(.bordered)
+            .padding()
+            .navigationTitle("Build-A-Bod")
+            .onAppear { print("ContentView appeared") }
         }
-        .buttonStyle(.bordered)
-        .padding()
-        .onAppear { print("ContentView appeared") }
     }
 }
