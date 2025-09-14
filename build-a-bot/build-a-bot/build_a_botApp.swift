@@ -6,6 +6,13 @@ import FirebaseCore
 struct build_a_botApp: App {
     init() {
         FirebaseApp.configure()
+        HealthKitManager.shared.requestAuthorization { success, error in
+            if success {
+                print("HealthKit authorization granted")
+            } else {
+                print("HealthKit authorization failed: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
     }
 
     var body: some Scene {
