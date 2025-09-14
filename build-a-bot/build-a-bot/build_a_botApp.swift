@@ -20,6 +20,6 @@ struct build_a_botApp: App {
             ContentView()
         }
         // Provide SwiftData context to the whole view tree
-        .modelContainer(for: [Item.self])
+        .modelContainer(for: [Item.self, HealthMetric.self])
     }
 }
