@@ -19,6 +19,7 @@ _A simple, offline-first walking & running tracker with smart route goals and pr
 - [Notifications (“Beat-Your-Best”)](#notifications-beat-your-best)
 - [Roadmap (high-level)](#roadmap-high-level)
 - [Testing](#testing)
+- [Testing offline data](#testing-offline-data)
 - [Dev tips](#dev-tips)
 - [Contributing](#contributing)
 - [License](#license)
@@ -184,6 +185,13 @@ Add usage strings to `Info.plist`:
 1. Add new `XCTestCase` files to the `build-a-botUITests` target.
 2. Commit your changes and open a pull request.
 3. The workflow automatically executes the UI tests on the simulator.
+
+### Testing offline data
+The app bundles `Resources/DefaultHealthMetrics.json` containing sample daily
+step and distance values. Unit tests and SwiftUI previews can seed an in-memory
+`ModelContainer` with this fixture by calling
+`LocalHealthStore().loadDefaultMetricsIfNeeded(context:)`, allowing the UI to
+run without HealthKit access.
 
 ---
 

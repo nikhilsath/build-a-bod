@@ -15,6 +15,8 @@ struct StepCountView: View {
                 .bold()
         }
         .onAppear {
+            localStore.loadDefaultMetricsIfNeeded(context: modelContext)
+
             let today = Date()
             if let metric = localStore.fetchMetric(for: today, context: modelContext) {
                 stepCount = Double(metric.steps)
@@ -31,5 +33,14 @@ struct StepCountView: View {
 }
 
 #Preview {
-    StepCountView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: HealthMetric.self, configurations: config)
+        let store = LocalHealthStore()
+        store.loadDefaultMetricsIfNeeded(context: container.mainContext)
+        return StepCountView()
+            .modelContainer(container)
+    } catch {
+        return StepCountView()
+    }
 }
