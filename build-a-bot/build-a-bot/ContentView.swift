@@ -1,36 +1,25 @@
 import SwiftUI
-#if canImport(FirebaseCore)
-import FirebaseCore
-#endif
-#if canImport(FirebaseFirestore)
-import FirebaseFirestore
-#endif
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 16) {
-                Button("Check Firebase configured") {
-                    print("Firebase configured:", FirebaseApp.app() != nil)
+        TabView {
+            DashboardView()
+                .tabItem {
+                    Label("Dashboard", systemImage: "house")
                 }
-
-                #if canImport(FirebaseFirestore)
-                Button("Test Firestore write") {
-                    Firestore.firestore().collection("debug")
-                        .addDocument(data: ["hello":"world","ts":Date()]) { err in
-                            print(err == nil ? "Firestore write OK" : "Firestore error: \(err!)")
-                        }
+            GoalsView()
+                .tabItem {
+                    Label("Goals", systemImage: "flag")
                 }
-                #endif
-
-                NavigationLink("Show Today's Steps") {
-                    StepCountView()
+            FriendsView()
+                .tabItem {
+                    Label("Friends", systemImage: "person.2")
                 }
-            }
-            .buttonStyle(.bordered)
-            .padding()
-            .navigationTitle("Build-A-Bod")
-            .onAppear { print("ContentView appeared") }
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle")
+                }
         }
     }
 }
+
