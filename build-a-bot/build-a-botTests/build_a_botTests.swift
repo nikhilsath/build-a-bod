@@ -5,6 +5,7 @@
 //  Created by Nikhil Sathyanarayana on 07/09/2025.
 //
 
+import Foundation
 import Testing
 @testable import build_a_bot
 import SwiftData
