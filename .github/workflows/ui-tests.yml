@@ -1,22 +1,23 @@
-name: CI
+name: UI Tests
 
 on:
-  pull_request:
-    branches: [ main ]
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
 
 jobs:
-  unit-tests:
+  ui-tests:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '16.4'
-      - name: Build and run unit tests
+      - name: Build and run UI tests
         run: |
           xcodebuild test \
             -project build-a-bot/build-a-bot.xcodeproj \
             -scheme build-a-bot \
             -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' \
-            -only-testing build-a-botTests \
+            -only-testing build-a-botUITests \
             CODE_SIGNING_ALLOWED=NO

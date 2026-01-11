@@ -179,12 +179,22 @@ Add usage strings to `Info.plist`:
 - **Unit:** XCTest (services, models).
 - **UI:** XCUITest for start/stop, permission flows.
 - **Health/Location fakes:** inject mock services for simulator.
-- **CI:** GitHub Actions uses `maxim-lobanov/setup-xcode` to select preinstalled Xcode 16.4, then builds the app and runs unit and UI tests on the latest iPhone 16 simulator with code signing disabled.
+- **CI:** GitHub Actions uses `maxim-lobanov/setup-xcode` to select preinstalled Xcode 16.4 and runs tests on the latest iPhone 16 simulator with code signing disabled.
 
-### Adding UI tests to CI
+### CI test split (fast PRs, slower UI nightly)
+- **Pull requests:** build + unit tests only (fast feedback).
+- **Nightly/manual:** UI tests run on a schedule or via `workflow_dispatch`.
+
+### Adding tests
+**Unit tests (default on PRs)**
+1. Add new `XCTestCase` files to the `build-a-botTests` target.
+2. Keep tests isolated from network/HealthKit by using mocks or fakes.
+3. Open a pull request; the `CI` workflow runs these automatically.
+
+**UI tests (nightly/manual)**
 1. Add new `XCTestCase` files to the `build-a-botUITests` target.
-2. Commit your changes and open a pull request.
-3. The workflow automatically executes the UI tests on the simulator.
+2. Avoid external dependencies; use stable IDs and deterministic flows.
+3. Run them locally or trigger the `UI Tests` workflow when needed.
 
 ### Testing offline data
 The app bundles `Resources/DefaultHealthMetrics.json` containing sample daily
